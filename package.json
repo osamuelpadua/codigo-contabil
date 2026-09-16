@@ -1,0 +1,12 @@
+{
+  "name": "codigo-contabil-pagina-de-vendas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Página de vendas do Código Contábil 3.0 (site estático).",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "serve-handler": "^6.1.5"
+  }
+}

@@ -24,6 +24,7 @@ A porta pode ser trocada pela variável `PORT`.
 
 ## Manutenção
 
-- **Link do formulário:** altere `APPLY_URL` no topo de `assets/js/main.js`. Todos os botões com a classe `.cta-link` passam a apontar para ele.
+- **Link do formulário:** está no `href` dos botões com a classe `cta-formulario` no `index.html` (use buscar e substituir). Não remova essa classe: o `main.js` usa ela para repassar os parâmetros do anúncio (`utm_*`, `fbclid`...) ao formulário.
+- **Meta Pixel:** instalado no fim do `<head>` do `index.html` (dispara o `PageView`).
 - **Cache de CSS/JS:** ao publicar mudanças em `style.css` ou `main.js`, atualize o `?v=` correspondente no `index.html`.
 - **Imagens:** ao trocar uma imagem, use um nome de arquivo novo (as imagens são servidas com cache longo). Se trocar as imagens do hero, atualize também os `<link rel="preload">` no `<head>`.

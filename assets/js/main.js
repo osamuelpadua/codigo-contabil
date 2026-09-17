@@ -2,20 +2,18 @@
    CÓDIGO CONTÁBIL 3.0 — Página de vendas
    ============================================================ */
 
-// URL do formulário de aplicação: todos os botões .cta-link passam a apontar para ela.
-const APPLY_URL = 'https://yayforms.link/jZlvbAE?utm_source=bioinstagram';
-
 (() => {
   'use strict';
 
   const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- CTAs ---------- */
-  if (APPLY_URL && APPLY_URL !== '#aplicar') {
-    document.querySelectorAll('.cta-link').forEach((a) => {
-      a.href = APPLY_URL;
-      a.target = '_blank';
-      a.rel = 'noopener';
+  /* ---------- CTAs: repassa os parâmetros da URL (utm_*, fbclid...) ao formulário ----------
+     Sem isso o lead chega "limpo" no formulário e perde a origem do anúncio.
+     A string é repassada exatamente como chegou, sem reescrever a codificação. */
+  const qs = window.location.search.substring(1);
+  if (qs) {
+    document.querySelectorAll('a.cta-formulario').forEach((a) => {
+      a.href += (a.href.indexOf('?') > -1 ? '&' : '?') + qs;
     });
   }
 

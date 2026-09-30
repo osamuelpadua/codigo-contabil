@@ -337,5 +337,38 @@ src="https://www.facebook.com/tr?id=4256411411268962&ev=PageView&noscript=1"/></
   <img class="lb__img" id="lbImg" alt="">
 </div>
 
+<script>
+(function () {
+  const PARAMS = [
+    'utm_source',
+    'utm_medium',
+    'utm_campaign',
+    'utm_content',
+    'utm_term',
+    'utm_id',
+    'fbclid'
+  ];
+
+  const entrada = new URLSearchParams(window.location.search);
+
+  document.querySelectorAll('a.cta-formulario').forEach(function(link) {
+    try {
+      const destino = new URL(link.href);
+
+      PARAMS.forEach(function(param) {
+        const valor = entrada.get(param);
+        if (valor) {
+          destino.searchParams.set(param, valor);
+        }
+      });
+
+      link.href = destino.toString();
+    } catch (e) {
+      console.error('Erro ao aplicar rastreamento:', e);
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
